@@ -59,22 +59,24 @@ left join nodes as persons on edges.target_node_id= persons.node_id
 where nodes.node_id = 0
 
 Adding primary key to tables in order to create the relation and to add index
-    ALTER TABLE `social`.`nodes`
+    ALTER TABLE `socialnetwork_nodes`
     CHANGE COLUMN `node_id` `node_id` INT(11) NOT NULL ,
     ADD PRIMARY KEY (`node_id`);
 
-    ALTER TABLE `social`.`edges`
+    ALTER TABLE `socialnetwork_edges`
     ADD INDEX `inx_src` (`source_node_id` ASC),
     ADD INDEX `inx_trg` (`target_node_id` ASC);
     
  To select the dept in mysql
  
-     select count(distinct persons2.node_id) from nodes
-    left join edges as endorsments1 on nodes.node_id = endorsments1.source_node_id
-    left join nodes as persons1 on endorsments1.target_node_id= persons1.node_id
-    left join edges as endorsments2 on persons1.node_id = endorsments2.source_node_id
-    left join nodes as persons2 on endorsments2.target_node_id= persons2.node_id
-    where nodes.node_id = 0
+     select count(distinct persons2.node_id) from socialnetwork_node
+    left join socialnetwork_edge as endorsments1 on socialnetwork_node.node_id = endorsments1.source_node_id
+    left join socialnetwork_node as persons1 on endorsments1.target_node_id= persons1.node_id
+    left join socialnetwork_edge as endorsments2 on persons1.node_id = endorsments2.source_node_id
+    left join socialnetwork_node as persons2 on endorsments2.target_node_id= persons2.node_id
+    where socialnetwork_node.node_id = 0
+    
+    
 
  The comparison could not be made between the databases 
 
