@@ -76,7 +76,10 @@ Adding primary key to tables in order to create the relation and to add index
     left join socialnetwork_node as persons2 on endorsments2.target_node_id= persons2.node_id
     where socialnetwork_node.node_id = 0
     
-    
+ 
+ ![image](https://user-images.githubusercontent.com/40825848/57206013-e3efe880-6fc2-11e9-8f26-964288bae5ab.png)
+
+ 
 
  The comparison could not be made between the databases 
 
